@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 Slide Mockup — Hackathon Placement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .subtitle {
+            color: #8b8ba7;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        /* Slide Container */
+        .slide-wrapper {
+            background: #fff;
+            width: 1100px;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Slide Header */
+        .slide-header {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf7 100%);
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 3px solid #2196F3;
+        }
+        .quarter-badge {
+            background: #fff;
+            border: 2px solid #333;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+        .slide-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+        .slide-number {
+            margin-left: auto;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #999;
+        }
+
+        /* Four Column Layout */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 20px 24px;
+            height: calc(100% - 70px);
+        }
+
+        .column {
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            background: #fafffe;
+            position: relative;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding-bottom: 8px;
+            border-bottom: 2px solid;
+            margin-bottom: 10px;
+        }
+        .col-objective .column-header { color: #e67e22; border-color: #e67e22; }
+        .col-achievements .column-header { color: #27ae60; border-color: #27ae60; }
+        .col-learnings .column-header { color: #8e44ad; border-color: #8e44ad; }
+        .col-challenges .column-header { color: #e74c3c; border-color: #e74c3c; }
+
+        .column ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.72rem;
+            line-height: 1.6;
+        }
+        .column li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        .column li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .existing-item {
+            color: #555;
+        }
+
+        /* Hackathon Callout — The NEW element */
+        .hackathon-new {
+            margin-top: auto;
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px dashed #f39c12;
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.3); }
+            50% { box-shadow: 0 0 15px 5px rgba(243, 156, 18, 0.3); }
+        }
+
+        .hackathon-new .new-badge {
+            position: absolute;
+            top: -10px;
+            right: -6px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .hackathon-new .trophy {
+            font-size: 1.1rem;
+        }
+        .hackathon-new .hack-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #7d6608;
+            margin-top: 2px;
+        }
+        .hackathon-new .hack-desc {
+            font-size: 0.62rem;
+            color: #8a7a2e;
+            margin-top: 2px;
+        }
+        .hackathon-new .hack-status {
+            font-size: 0.62rem;
+            color: #27ae60;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        /* Sub-headers inside columns */
+        .sub-header {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #333;
+            margin-top: 8px;
+            margin-bottom: 2px;
+            text-decoration: underline;
+        }
+
+        /* Tech logos row */
+        .tech-logos {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: 1.3rem;
+        }
+
+        /* Nexus icon placeholder */
+        .nexus-icon {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: #666;
+            padding-top: 6px;
+        }
+
+        /* In-progress indicator */
+        .in-progress {
+            color: #e67e22;
+            font-weight: 600;
+        }
+        .in-progress::before {
+            content: '🔄 ';
+        }
+
+        /* Arrow indicators for placement guide */
+        .placement-arrow {
+            position: absolute;
+            color: #e74c3c;
+            font-size: 2rem;
+            animation: pointDown 1s ease-in-out infinite;
+        }
+        @keyframes pointDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Legend below slide */
+        .legend {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+        }
+        .dot-existing { background: #fafffe; border: 2px solid #4CAF50; }
+        .dot-new { background: linear-gradient(135deg, #fff3cd, #ffeaa7); border: 2px dashed #f39c12; }
+
+        /* Additional suggestions section */
+        .suggestions {
+            margin-top: 35px;
+            width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .suggestion-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            color: #ccc;
+        }
+        .suggestion-card h3 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .suggestion-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .suggestion-card .visual-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            line-height: 1.8;
+        }
+
+        /* Slide 3 Roadmap Preview */
+        .roadmap-preview {
+            margin-top: 35px;
+            width: 1100px;
+        }
+        .roadmap-preview h2 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .roadmap-slide {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            padding: 24px 30px;
+        }
+        .roadmap-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2196F3;
+        }
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 5%;
+            right: 5%;
+            height: 3px;
+            background: #333;
+        }
+        .q-box {
+            border-radius: 12px;
+            padding: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .q1 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+        .q2 { background: linear-gradient(135deg, #e8f5e9, #a5d6a7); }
+        .q3 { background: linear-gradient(135deg, #e8f5e9, #81c784); }
+        .q4 { background: linear-gradient(135deg, #bbdefb, #90caf9); }
+
+        .q-label {
+            background: #fff;
+            border: 2px solid #333;
+            display: inline-block;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+        .q-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .q-box ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.68rem;
+        }
+        .q-box li {
+            padding: 2px 0;
+            padding-left: 12px;
+            position: relative;
+        }
+        .q-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+        }
+        .q-box .new-item {
+            color: #c0392b;
+            font-weight: 600;
+        }
+        .q-box .hackathon-badge-small {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 1.5px dashed #f39c12;
+            border-radius: 6px;
+            padding: 4px 8px;
+            margin-top: 6px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: #7d6608;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📐 Q4 Slide Mockup — Where to Place Hackathon</h1>
+    <p class="subtitle">The golden glowing box shows exactly where the hackathon callout should go on Slide 10</p>
+
+    <!-- SLIDE 10 MOCKUP -->
+    <div class="slide-wrapper">
+        <div class="slide-header">
+            <span class="quarter-badge">Q4 FY '26</span>
+            <span class="slide-title">MOBILE CI/CD + AI/ML</span>
+            <span class="slide-number">10</span>
+        </div>
+
+        <div class="columns">
+            <!-- OBJECTIVE -->
+            <div class="column col-objective">
+                <div class="column-header">🎯 OBJECTIVE</div>
+                <ul>
+                    <li class="existing-item">ML-powered AWS EC2 node selection</li>
+                    <li class="existing-item">Build Android CI/CD</li>
+                    <li class="existing-item">Enable Nexus Repo deploy</li>
+                </ul>
+                <div class="nexus-icon">
+                    <span style="font-size:1.2rem">📦</span> nexus repository
+                </div>
+            </div>
+
+            <!-- ACHIEVEMENTS -->
+            <div class="column col-achievements">
+                <div class="column-header">✅ ACHIEVEMENTS</div>
+                <ul>
+                    <li class="existing-item">Docker environment ready</li>
+                    <li class="existing-item">Build & test pipeline working</li>
+                    <li class="existing-item in-progress">Nexus Repo deploy in progress</li>
+                    <li class="existing-item">Synthetic dataset generated</li>
+                    <li class="existing-item in-progress">Prediction model in progress</li>
+                </ul>
+
+                <!-- 🏆 HACKATHON — NEW ELEMENT -->
+                <div class="hackathon-new">
+                    <span class="new-badge">✨ ADD THIS</span>
+                    <div class="trophy">🏆</div>
+                    <div class="hack-title">HACKATHON PARTICIPATION</div>
+                    <div class="hack-desc">Self-Healing CI/CD with Agentic AI</div>
+                    <div class="hack-status">✅ Submitted on time</div>
+                </div>
+            </div>
+
+            <!-- LEARNINGS -->
+            <div class="column col-learnings">
+                <div class="column-header">📚 LEARNINGS</div>
+
+                <div class="sub-header">TECH STACK</div>
+                <ul>
+                    <li class="existing-item">Android CI/CD + Fastlane</li>
+                    <li class="existing-item">APK/AAB generation</li>
+                    <li class="existing-item">ML dataset preparation</li>
+                </ul>
+
+                <div class="sub-header">SOFT SKILLS</div>
+                <ul>
+                    <li class="existing-item">Time Management</li>
+                    <li class="existing-item">Research & experimentation</li>
+                    <li class="existing-item">Presentation and demo skills</li>
+                </ul>
+
+                <!-- NEW soft skill -->
+                <div class="hackathon-new" style="margin-top: 8px; padding: 6px 10px;">
+                    <span class="new-badge">✨ ADD</span>
+                    <div class="hack-desc" style="color: #7d6608; font-weight: 600; font-size: 0.65rem;">
+                        • Working under hackathon deadlines
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHALLENGES -->
+            <div class="column col-challenges">
+                <div class="column-header">⚡ CHALLENGES</div>
+                <ul>
+                    <li class="existing-item">Internal Dataset needed for ML model training</li>
+                    <li class="existing-item">AWS access for node selection</li>
+                    <li class="existing-item">Access needed for the Play Store for deployment</li>
+                    <li class="existing-item">Needed Physical device/cloud device for E2E test</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot dot-existing"></div>
+            Existing content (keep as-is)
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot dot-new"></div>
+            NEW — Hackathon content to add (glowing golden boxes)
+        </div>
+    </div>
+
+    <!-- SLIDE 3 ROADMAP PREVIEW -->
+    <div class="roadmap-preview">
+        <h2>📐 Slide 3 Roadmap — Where to Add Hackathon Bullet</h2>
+        <div class="roadmap-slide">
+            <div class="roadmap-header">
+                <span class="quarter-badge">Roadmap</span>
+                <span class="slide-title" style="font-size:1.2rem;">INTERNSHIP ROADMAP</span>
+                <span class="slide-number">3</span>
+            </div>
+            <div class="timeline">
+                <div class="q-box q1">
+                    <span class="q-label">Q1 FY '25</span>
+                    <div class="q-title">🧱 Foundation & POC 1</div>
+                    <ul>
+                        <li>Jenkins & Docker fundamentals</li>
+                        <li>Groovy & Python scripting</li>
+                        <li>POC 1: Repository Maintenance</li>
+                    </ul>
+                </div>
+                <div class="q-box q2">
+                    <span class="q-label">Q2 FY '25</span>
+                    <div class="q-title">🔗 Unified CI Core (POC 2)</div>
+                    <ul>
+                        <li>Shared Library architecture</li>
+                        <li>Java & Python pipelines</li>
+                        <li>POC 2: Unified CI</li>
+                    </ul>
+                </div>
+                <div class="q-box q3">
+                    <span class="q-label">Q3 FY '25</span>
+                    <div class="q-title">⚛️🧠 React + AI/ML</div>
+                    <ul>
+                        <li>React/React-Native support</li>
+                        <li>Jenkins MCP exploration</li>
+                        <li>AI-assisted CI research</li>
+                    </ul>
+                </div>
+                <div class="q-box q4">
+                    <span class="q-label">Q4 FY '26</span>
+                    <div class="q-title">📱💰 Mobile CI/CD + AI/ML</div>
+                    <ul>
+                        <li>Android CI/CD pipeline</li>
+                        <li>Nexus Repo deployment</li>
+                        <li>AI/ML Integration</li>
+                    </ul>
+                    <!-- NEW HACKATHON ITEM -->
+                    <div class="hackathon-badge-small">
+                        🏆 Hackathon: Self-Healing CI/CD
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLACEMENT SUGGESTIONS -->
+    <div class="suggestions">
+        <div class="suggestion-card">
+            <h3>📍 Placement on Slide 10 (Q4)</h3>
+            <p>Add the hackathon callout box at the <strong>bottom of the Achievements column</strong>. It should be a separate highlighted box — not just another bullet point — so directors' eyes are drawn to it.</p>
+            <div class="visual-box">
+                Achievements Column:<br>
+                • Docker environment ready<br>
+                • Build & test pipeline working<br>
+                • Synthetic dataset generated<br>
+                ─────────────────────<br>
+                🏆 <strong>HACKATHON</strong><br>
+                &nbsp;&nbsp;&nbsp;Self-Healing CI/CD<br>
+                &nbsp;&nbsp;&nbsp;with Agentic AI<br>
+                &nbsp;&nbsp;&nbsp;✅ Submitted on time
+            </div>
+        </div>
+        <div class="suggestion-card">
+            <h3>📍 Placement on Slide 3 (Roadmap)</h3>
+            <p>Add a small hackathon badge inside the <strong>Q4 box</strong> at the bottom, after the existing bullet points. Use a golden background to make it stand out.</p>
+            <div class="visual-box">
+                Q4 Box:<br>
+                • Android CI/CD pipeline<br>
+                • Nexus Repo deployment<br>
+                • AI/ML Integration<br>
+                ─────────────────────<br>
+                🏆 Hackathon: Self-Healing CI/CD
+            </div>
+        </div>
+        <div class="suggestion-card">
+            <h3>🎨 Styling Tips</h3>
+            <p>Make the hackathon box visually distinct from regular bullets:</p>
+            <div class="visual-box">
+                ✅ Use gold/yellow background<br>
+                ✅ Add a trophy 🏆 icon<br>
+                ✅ Use a dashed border<br>
+                ✅ Keep text short — 2-3 lines max<br>
+                ❌ Don't make it bigger than other columns<br>
+                ❌ Don't use red — save that for challenges
+            </div>
+        </div>
+        <div class="suggestion-card">
+            <h3>💡 Why This Placement Works</h3>
+            <p>Directors scan slides in a <strong>Z-pattern</strong> — top-left to top-right, then bottom-left to bottom-right. Placing the hackathon at the bottom of Achievements means:</p>
+            <div class="visual-box">
+                1. They see your core work FIRST<br>
+                2. Then the hackathon catches their<br>
+                &nbsp;&nbsp;&nbsp;eye as a BONUS achievement<br>
+                3. The golden color creates a<br>
+                &nbsp;&nbsp;&nbsp;"pleasant surprise" moment<br>
+                4. It says: "This intern goes<br>
+                &nbsp;&nbsp;&nbsp;above and beyond"
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
