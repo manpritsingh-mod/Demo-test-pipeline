@@ -156,7 +156,7 @@ Below is your **complete, ready-to-speak script** with all three things baked in
 >
 > Q3 was about extending UnifiedCI to React projects and exploring how AI/ML can help in CI/CD.
 >
-> And in Q4, I focused on innovation — ML-based node selection and mobile CI/CD.
+> And in Q4, I focused on innovation — ML-based node selection, mobile CI/CD, and I also participated in a hackathon on Self-Healing CI/CD with Agentic AI.
 >
 > So the journey has been — learn, build, extend, and now innovate.
 
@@ -273,7 +273,9 @@ Below is your **complete, ready-to-speak script** with all three things baked in
 >
 > Second — mobile CI/CD. My goal is simple — a developer pushes code, and everything else happens automatically. Build. Test. Package. Deploy.
 >
-> Challenges — Play Store requires credentials and signing certificates, which need approvals. For the ML work, getting access to real AWS usage data has been challenging.
+> And one more thing this quarter — I participated in an internal hackathon. The topic I worked on was **Self-Healing CI/CD with Agentic AI**. 👵 *The idea was — what if when a build fails, instead of just sending a notification, the system could automatically understand what went wrong, figure out the fix, and try to heal itself?* I submitted the project on time, and it was a great experience — it pushed me to think beyond just automation, towards truly intelligent, self-correcting systems.
+>
+> Challenges this quarter — Play Store requires credentials and signing certificates, which need approvals. For the ML work, getting access to real AWS usage data has been challenging.
 
 **↓** *"Let me show you both architectures..."*
 
